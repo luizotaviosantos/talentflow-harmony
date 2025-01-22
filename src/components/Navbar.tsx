@@ -17,7 +17,13 @@ const Navbar = () => {
     { name: 'Empresas', path: '/empresas', hasDropdown: true },
     { name: 'Recruiters', path: '/recruiters', hasDropdown: true },
     { name: 'Candidatos', path: '/candidatos', hasDropdown: true },
-    { name: 'Carreiras', path: '/carreiras', hasDropdown: true },
+  ];
+
+  const careerItems = [
+    { name: 'Análise Gratuita', path: '/carreiras/analise-gratuita' },
+    { name: 'LinkedIn', path: '/carreiras/linkedin' },
+    { name: 'Simulação de Entrevista', path: '/carreiras/simulacao-entrevista' },
+    { name: 'Potencialize sua carreira', path: '/carreiras/potencialize' },
   ];
 
   return (
@@ -42,6 +48,22 @@ const Navbar = () => {
                 {item.hasDropdown && <ChevronDown className="ml-1 h-4 w-4" />}
               </Link>
             ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="text-gray-700 hover:text-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors hover:bg-gray-50">
+                Carreiras
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {careerItems.map((item) => (
+                  <DropdownMenuItem key={item.path}>
+                    <Link to={item.path} className="w-full">
+                      {item.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <DropdownMenu>
               <DropdownMenuTrigger className="text-gray-700 hover:text-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors hover:bg-gray-50">
@@ -91,6 +113,16 @@ const Navbar = () => {
             {menuItems.map((item) => (
               <Link
                 key={item.name}
+                to={item.path}
+                className="text-gray-700 hover:text-primary block px-3 py-2 rounded-lg text-base font-medium hover:bg-gray-50"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            {careerItems.map((item) => (
+              <Link
+                key={item.path}
                 to={item.path}
                 className="text-gray-700 hover:text-primary block px-3 py-2 rounded-lg text-base font-medium hover:bg-gray-50"
                 onClick={() => setIsOpen(false)}
