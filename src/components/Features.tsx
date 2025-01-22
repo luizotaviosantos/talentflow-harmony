@@ -25,23 +25,26 @@ const features = [
 
 const Features = () => {
   return (
-    <div className="py-16 bg-white">
+    <div className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900">Por que escolher a TalentFlow?</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Por que escolher a TalentFlow?</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Descubra como nossa plataforma pode transformar sua experiência de recrutamento
+          </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="relative p-6 bg-white rounded-lg border border-gray-100 hover:border-primary transition-colors animate-fade-in"
+              className="relative p-8 bg-white rounded-2xl border border-gray-100 hover:border-primary/20 transition-all duration-300 hover:shadow-xl group animate-fade-in"
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <feature.icon className="h-6 w-6 text-primary" />
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <feature.icon className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">{feature.name}</h3>
-              <p className="text-gray-500">{feature.description}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.name}</h3>
+              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
