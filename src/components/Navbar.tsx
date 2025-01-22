@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Menu, X, ChevronDown, Globe2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +18,6 @@ const Navbar = () => {
     { name: 'Recruiters', path: '/recruiters', hasDropdown: true },
     { name: 'Candidatos', path: '/candidatos', hasDropdown: true },
     { name: 'Carreiras', path: '/carreiras', hasDropdown: true },
-    { name: 'Oportunidades', path: '/oportunidades', hasDropdown: true },
   ];
 
   return (
@@ -37,6 +42,25 @@ const Navbar = () => {
                 {item.hasDropdown && <ChevronDown className="ml-1 h-4 w-4" />}
               </Link>
             ))}
+
+            <DropdownMenu>
+              <DropdownMenuTrigger className="text-gray-700 hover:text-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center transition-colors hover:bg-gray-50">
+                Oportunidades
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <Link to="/buscar-vagas" className="w-full">
+                    Buscar Vagas
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link to="/grupos-whatsapp" className="w-full">
+                    Grupos de Empregos
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             <button className="text-gray-700 hover:text-primary px-4 py-2 rounded-lg text-sm font-medium flex items-center hover:bg-gray-50">
               <Globe2 className="h-4 w-4 mr-1" />
@@ -74,6 +98,20 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
+            <Link
+              to="/buscar-vagas"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-lg text-base font-medium hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Buscar Vagas
+            </Link>
+            <Link
+              to="/grupos-whatsapp"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-lg text-base font-medium hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Grupos de Empregos
+            </Link>
             <button className="w-full text-left text-gray-700 hover:text-primary block px-3 py-2 rounded-lg text-base font-medium hover:bg-gray-50">
               <Globe2 className="h-4 w-4 inline mr-2" />
               PT
